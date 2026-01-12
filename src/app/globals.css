@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  /* Ultra Clean Light Theme */
+  --background: #ffffff;
+  --foreground: #020617;
+
+  --primary: #4f46e5;
+  --primary-foreground: #ffffff;
+
+  --card: #ffffff;
+  --card-foreground: #020617;
+
+  --border: #f1f5f9;
+  --input: #f8fafc;
+  --ring: #6366f1;
+}
+
+.dark {
+  /* Deep Luxury Dark Theme */
+  --background: #020617;
+  --foreground: #f8fafc;
+
+  --primary: #818cf8;
+  --primary-foreground: #ffffff;
+
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #4f46e5;
+
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-black tracking-tight;
+  }
+}
+
+/* Glassmorphism utility - Better Refinement */
+.glass {
+  @apply bg-white/70 dark:bg-slate-900/40 backdrop-blur-2xl border border-white/20 dark:border-slate-800/30 shadow-2xl;
+}
+
+.glass-dark {
+  @apply bg-slate-950/80 dark:bg-slate-950/80 backdrop-blur-2xl border border-white/10 shadow-2xl;
+}
+
+/* Premium Card shadow - More subtle */
+.premium-shadow {
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.03);
+}
+
+.dark .premium-shadow {
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Refined Inputs */
+input,
+textarea,
+select {
+  @apply bg-input border border-border/10 focus:border-primary/30 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-primary/5 transition-all outline-none rounded-2xl px-6 py-4 text-foreground placeholder:text-slate-400 dark:placeholder:text-slate-500 font-medium shadow-sm active:scale-[0.99];
+}
+
+button {
+  @apply transition-all duration-300 active:scale-95 cursor-pointer;
+}
+
+/* Smooth fade in */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
